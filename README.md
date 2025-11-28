@@ -1,0 +1,51 @@
+🌟 Portfolio – Shivakant Singh
+
+A modern, high-performance developer portfolio showcasing my work as a Full-Stack Engineer specializing in TypeScript, Node.js, React, AWS, NGINX, and Linux.
+This portfolio highlights my skills, experience, projects, and includes a fully working contact form powered by EmailJS.
+
+🚀 Live Demo
+
+🔗 GitHub Pages: Add your deployed link here
+Example:
+https://shivakant1021.github.io/portfolio/
+
+📌 Features
+
+⚡ Modern & clean UI built with HTML, CSS (Tailwind), and JavaScript
+
+📱 Fully responsive design (mobile-first)
+
+📨 Contact form with real-time validation
+
+✉ Integrated with EmailJS to receive inquiries directly in Gmail
+
+🎨 Smooth animations & hover effects
+
+🧑‍💻 Sections for:
+
+Hero
+
+About
+
+Skills
+
+Projects
+
+Experience
+
+Contact
+📨 Contact Form Integration (EmailJS)
+
+This portfolio uses EmailJS v4 to send messages directly to Gmail.
+
+Make sure you configure:
+
+Service ID
+
+Template ID
+
+Public Key
+
+Domain restrictions (security)
+Database	MongoDB, Redis
+Other Tools	Git, GitHub, Docker, EmailJS
