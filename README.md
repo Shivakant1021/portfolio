@@ -34,11 +34,18 @@ Projects
 Experience
 
 Contact
+📨 Contact Form Integration (EmailJS)
 
-  🛠 Tech Stack
-Category	Technologies
-Frontend	HTML, Tailwind CSS, Vanilla JS
-Backend (for projects)	Node.js, Express, GraphQL
-DevOps	Linux, Ubuntu, NGINX, AWS EC2 & S3
+This portfolio uses EmailJS v4 to send messages directly to Gmail.
+
+Make sure you configure:
+
+Service ID
+
+Template ID
+
+Public Key
+
+Domain restrictions (security)
 Database	MongoDB, Redis
 Other Tools	Git, GitHub, Docker, EmailJS
