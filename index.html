@@ -863,70 +863,60 @@
 
   </div>
   <!--  -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-  <script>
-    // --- VALIDATION HELPERS ---
-    function showError(id, show) {
-      const el = document.getElementById(id);
-      if (show) el.classList.remove("hidden");
-      else el.classList.add("hidden");
-    }
+<script>
+  // Initialize EmailJS
+  emailjs.init("EdnqKAl0UIiGZTDtC");
 
-    function validateName(value) {
-      return value.trim().length >= 3;
-    }
+  // ---- VALIDATION HELPERS ----
+  function showError(id, show) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle("hidden", !show);
+  }
 
-    function validateEmail(value) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-    }
+  function validateName(v) { return v.trim().length >= 3; }
+  function validateEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function validateSubject(v) { return v.trim().length >= 3; }
+  function validateMessage(v) { return v.trim().length >= 10; }
 
-    function validateSubject(value) {
-      return value.trim().length >= 3;
-    }
+  // ---- REAL-TIME VALIDATION ----
+  document.getElementById("name").addEventListener("input", e =>
+    showError("nameError", !validateName(e.target.value))
+  );
+  
+  document.getElementById("email").addEventListener("input", e =>
+    showError("emailError", !validateEmail(e.target.value))
+  );
 
-    function validateMessage(value) {
-      return value.trim().length >= 10;
-    }
+  document.getElementById("subject").addEventListener("input", e =>
+    showError("subjectError", !validateSubject(e.target.value))
+  );
 
-    // --- REAL-TIME VALIDATION ---
-    document.getElementById("name").addEventListener("input", (e) => {
-      showError("nameError", !validateName(e.target.value));
-    });
+  document.getElementById("message").addEventListener("input", e =>
+    showError("messageError", !validateMessage(e.target.value))
+  );
 
-    document.getElementById("email").addEventListener("input", (e) => {
-      showError("emailError", !validateEmail(e.target.value));
-    });
+  // ---- FORM SUBMISSION (ONLY ONE HANDLER) ----
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    document.getElementById("subject").addEventListener("input", (e) => {
-      showError("subjectError", !validateSubject(e.target.value));
-    });
+    const params = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value,
+    };
 
-    document.getElementById("message").addEventListener("input", (e) => {
-      showError("messageError", !validateMessage(e.target.value));
-    });
-
-    // --- FORM SUBMISSION ---
-    emailjs.init("EdnqKAl0UIiGZTDtC");
-
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const params = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        subject: document.getElementById("subject").value,
-        message: document.getElementById("message").value,
-      };
-
-      emailjs.send("service_lt6e6ff", "template_b4o0k8p", params)
-        .then(() => {
-          document.getElementById("toast").classList.remove("hidden");
-          document.getElementById("contactForm").reset();
-        })
-        .catch((error) => console.error("Email send failed:", error));
-    });
-  </script>
+    emailjs.send("service_lt6e6ff", "template_b4o0k8p", params)
+      .then(() => {
+        document.getElementById("toast").classList.remove("hidden");
+        document.getElementById("contactForm").reset();
+      })
+      .catch((error) => console.error("Email send failed:", error));
+  });
+</script>
 
 
   <!-- Scripts -->
